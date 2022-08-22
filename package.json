@@ -1,0 +1,16 @@
+{
+  "name": "@plugjs/eslint-plugin",
+  "version": "0.0.1",
+  "description": "Shared ESLint configurations and extras",
+  "main": "./index.cjs",
+  "author": "Team Juit <developers@juit.com>",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": ">=5",
+    "@typescript-eslint/parser": ">=5",
+    "eslint": ">=8"
+  },
+  "dependencies": {
+    "eslint-config-google": "^0.14.0"
+  }
+}
