@@ -109,7 +109,7 @@ module.exports = {
     'no-invalid-this': [ 'off' ], // use @typescript/no-invalid-this
   },
   overrides: [ {
-    files: [ '*.js' ],
+    files: [ '*.js', '*.cjs', '*.mjs' ],
     parser: 'espree',
     env: {
       node: true,
