@@ -10,6 +10,9 @@
     "@typescript-eslint/parser": ">=5"
   },
   "dependencies": {
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-unicorn": "^44.0.2"
   }
 }
