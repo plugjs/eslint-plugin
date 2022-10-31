@@ -10,11 +10,27 @@ module.exports = {
     createDefaultProgram: false,
     project: [
       './tsconfig.json',
+      './test/tsconfig.json',
     ],
   },
   plugins: [
     '@typescript-eslint',
+    'import',
+    'unicorn',
   ],
+  // Settings for "eslint-plugin-import"
+  settings: {
+    'import/extensions': [ '.ts', '.js', '.mjs', '.cjs' ],
+    'import/external-module-folders': [ 'node_modules', 'node_modules/@types' ],
+    'import/parsers': {
+      '@typescript-eslint/parser': [ '.ts' ],
+      'espree': [ '.js', '.mjs', '.cjs' ],
+    },
+    'import/resolver': {
+      'typescript': true,
+      'node': true,
+    },
+  },
   extends: [
     'google',
     'eslint:recommended',
@@ -91,6 +107,7 @@ module.exports = {
     'valid-jsdoc': [ 'off' ], // nope as well!
 
     // TypeScript sanity
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': [ 'error' ],
     '@typescript-eslint/no-dupe-class-members': [ 'error' ],
     '@typescript-eslint/no-invalid-this': [ 'error' ],
@@ -99,6 +116,20 @@ module.exports = {
       'allowDirectConstAssertionInArrowFunctions': true,
       'allowConciseArrowFunctionExpressionsStartingWithVoid': true,
     } ],
+
+    // Import specifics
+    'import/no-cycle': 'error',
+    'import/no-duplicates': 'error',
+    'import/order': [ 'error', {
+      'groups': [ 'builtin', 'external', 'internal', [ 'parent', 'sibling' ], 'index', 'object', 'type' ],
+      'newlines-between': 'always',
+      'warnOnUnassignedImports': true,
+    } ],
+
+    // Unicorn extras
+    'unicorn/empty-brace-spaces': 'error',
+    'unicorn/no-instanceof-array': 'error',
+    'unicorn/prefer-node-protocol': 'error',
 
     // Turn off specific JavaScript rules
     'guard-for-in': [ 'off' ], // no errors on for ... in
@@ -131,5 +162,16 @@ module.exports = {
       '@typescript-eslint/no-floating-promises': [ 'off' ],
       '@typescript-eslint/explicit-function-return-type': [ 'off' ],
     },
+  }, {
+    files: [ '*.cjs' ],
+    parserOptions: {
+      'sourceType': 'script',
+    }
+  }, {
+    files: [ '*.mjs' ],
+    parserOptions: {
+      'sourceType': 'module',
+    }
   } ],
+
 }
