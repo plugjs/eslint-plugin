@@ -120,6 +120,12 @@ module.exports = {
     // Import specifics
     'import/no-cycle': 'error',
     'import/no-duplicates': 'error',
+    'import/no-extraneous-dependencies': [ 'error', {
+      'devDependencies': [ 'test' ],
+      'peerDependencies': true,
+      'optionalDependencies': true,
+      'bundledDependencies': false,
+    } ],
     'import/order': [ 'error', {
       'groups': [ 'builtin', 'external', 'internal', [ 'parent', 'sibling' ], 'index', 'object', 'type' ],
       'newlines-between': 'always',
