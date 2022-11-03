@@ -121,7 +121,7 @@ module.exports = {
     'import/no-cycle': 'error',
     'import/no-duplicates': 'error',
     'import/no-extraneous-dependencies': [ 'error', {
-      'devDependencies': [ 'test' ],
+      'devDependencies': [ './test', './build.ts' ],
       'peerDependencies': true,
       'optionalDependencies': true,
       'bundledDependencies': false,
