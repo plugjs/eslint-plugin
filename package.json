@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.cjs",
   "author": "Team Juit <developers@juit.com>",
