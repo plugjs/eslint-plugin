@@ -14,5 +14,10 @@
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-unicorn": "^44.0.2"
-  }
+  },
+  "files": [
+    "*.md",
+    "index.cjs",
+    "configs/"
+  ]
 }
