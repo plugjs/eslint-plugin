@@ -120,12 +120,7 @@ module.exports = {
     // Import specifics
     'import/no-cycle': 'error',
     'import/no-duplicates': 'error',
-    'import/no-extraneous-dependencies': [ 'error', {
-      'devDependencies': [ 'test/**', 'build.ts' ],
-      'peerDependencies': true,
-      'optionalDependencies': true,
-      'bundledDependencies': false,
-    } ],
+    'import/no-extraneous-dependencies': 'off',
     'import/order': [ 'error', {
       'groups': [ 'builtin', 'external', 'internal', [ 'parent', 'sibling' ], 'index', 'object', 'type' ],
       'newlines-between': 'always',
@@ -167,6 +162,17 @@ module.exports = {
       '@typescript-eslint/no-invalid-this': [ 'off' ],
       '@typescript-eslint/no-floating-promises': [ 'off' ],
       '@typescript-eslint/explicit-function-return-type': [ 'off' ],
+    },
+  }, {
+    files: [ 'src/**' ],
+    rules: {
+      // Turn _ON_ dependencies checks only for sources
+      'import/no-extraneous-dependencies': [ 'error', {
+        'devDependencies': true,
+        'peerDependencies': true,
+        'optionalDependencies': true,
+        'bundledDependencies': false,
+      } ],
     },
   }, {
     files: [ '*.cjs' ],
