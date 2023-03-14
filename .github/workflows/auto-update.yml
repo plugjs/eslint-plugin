@@ -36,6 +36,6 @@ jobs:
 
           # Commit all changes and push them back to the repo
           git config user.email 'developers@juit.com'
-          git config user.name 'Automatic Updates'
+          git config user.name 'Github Workflows'
           git commit -a -m "Release for automatic updates $(date '+%Y-%m-%d %H:%M:%S')"
           git push -u origin '${{ github.ref_name }}'

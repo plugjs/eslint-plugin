@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.repo_token }}
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
@@ -27,7 +29,17 @@ jobs:
       - name: Publish Package
         run: |
           VERSION="$(node -p 'require("./package.json").version')"
-          gh release create "v${VERSION}" --title "Release ${VERSION}" --target "${{ github.sha }}"
+
+          git config user.email 'developers@juit.com'
+          git config user.name 'Github Workflows'
+          git tag -a -m "v${VERSION}" "v${VERSION}" "${{ github.sha }}"
+          git push --tags
+
+          gh release create "v${VERSION}" \
+            --title "Release ${VERSION}" \
+            --target "${{ github.sha }}" \
+            --verify-tag
+
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
