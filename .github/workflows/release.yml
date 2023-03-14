@@ -1,0 +1,33 @@
+name: Release Package
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Release Package
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Build Package
+        run: |
+          npm clean-install
+          npm run build
+
+      - name: Publish Package
+        run: |
+          VERSION="$(node -p 'require("./package.json").version')"
+          gh release create "v${VERSION}" --title "Release ${VERSION}"
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          GH_TOKEN: ${{ secrets.repo_token }}
