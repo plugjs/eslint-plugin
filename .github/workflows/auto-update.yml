@@ -1,0 +1,41 @@
+name: Automatic Updates
+
+on:
+  schedule:
+    - cron: "30 2 * * 5"
+  workflow_dispatch:
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+    name: Automatic Updates
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.repo_token }}
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: https://npm.pkg.github.com
+
+      - name: Check and apply dependencies updates
+        run: |
+          # Check for updates, and exit script on error / no updates found
+          npx '@juit/check-updates' --quick --bump || exit $(( $? == 255 ? 0 : $? ))
+
+          # If still here, just run a full package update and install dependencies
+          rm -rf node-modules package-lock.json
+          npm install
+
+          # Build our package
+          npm run build
+
+          # Commit all changes and push them back to the repo
+          git config user.email 'developers@juit.com'
+          git config user.name 'Automatic Updates'
+          git commit -a -m "Release for automatic updates $(date '+%Y-%m-%d %H:%M:%S')"
+          git push -u origin '${{ github.ref_name }}'
