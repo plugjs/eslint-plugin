@@ -178,12 +178,12 @@ module.exports = {
     files: [ '*.cjs' ],
     parserOptions: {
       'sourceType': 'script',
-    }
+    },
   }, {
     files: [ '*.mjs' ],
     parserOptions: {
       'sourceType': 'module',
-    }
+    },
   } ],
 
 }
