@@ -16,6 +16,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
+          registry-url: https://registry.npmjs.org
           node-version: 18.x
 
       - name: Build Package
@@ -27,7 +28,7 @@ jobs:
         run: |
           VERSION="$(node -p 'require("./package.json").version')"
           gh release create "v${VERSION}" --title "Release ${VERSION}" --target "${{ github.sha }}"
-          npm publish
+          npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           GH_TOKEN: ${{ secrets.repo_token }}
