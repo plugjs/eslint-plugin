@@ -28,7 +28,7 @@ jobs:
         run: |
           VERSION="$(node -p 'require("./package.json").version')"
           gh release create "v${VERSION}" --title "Release ${VERSION}" --target "${{ github.sha }}"
-          npm publish --dry-run
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           GH_TOKEN: ${{ secrets.repo_token }}
