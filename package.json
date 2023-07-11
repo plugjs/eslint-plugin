@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.cjs",
   "author": "Team Juit <developers@juit.com>",
@@ -9,8 +9,8 @@
     "build": "eslint *.cjs configs/*.cjs"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": ">=5",
-    "@typescript-eslint/parser": ">=5"
+    "@typescript-eslint/eslint-plugin": ">=6",
+    "@typescript-eslint/parser": ">=6"
   },
   "dependencies": {
     "eslint-config-google": "^0.14.0",
