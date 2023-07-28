@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.cjs",
   "author": "Team Juit <developers@juit.com>",
@@ -16,7 +16,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-unicorn": "^48.0.0"
+    "eslint-plugin-unicorn": "^48.0.1"
   },
   "files": [
     "*.md",
