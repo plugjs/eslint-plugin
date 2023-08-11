@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.cjs",
   "author": "Team Juit <developers@juit.com>",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "eslint-config-google": "^0.14.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-unicorn": "^48.0.1"
   },
