@@ -78,9 +78,6 @@ module.exports = {
     // Always have newline character at the end of the file
     'eol-last': [ 'error', 'always' ],
 
-    // Constraints for the max line length
-    'max-len': [ 'warn', { 'code': 120, 'comments': 80 } ],
-
     // No more than 2 blank lines
     'no-multiple-empty-lines': [ 'error', { 'max': 2, 'maxBOF': 0, 'maxEOF': 1 } ],
 
