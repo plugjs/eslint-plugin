@@ -38,8 +38,8 @@ module.exports = {
   ],
   rules: {
     // No logging / no debugging
-    'no-console': 'warn',
-    'no-debugger': 'warn',
+    'no-console': [ 'warn' ],
+    'no-debugger': [ 'warn' ],
 
     // Indenting, but for TypeScript
     'indent': [ 'off' ],
@@ -79,8 +79,7 @@ module.exports = {
     'eol-last': [ 'error', 'always' ],
 
     // Constraints for the max line length
-    // 'max-len': [ 'error', { 'code': 120, 'comments': 80 } ],
-    'max-len': [ 'off' ],
+    'max-len': [ 'warn', { 'code': 120, 'comments': 80 } ],
 
     // No more than 2 blank lines
     'no-multiple-empty-lines': [ 'error', { 'max': 2, 'maxBOF': 0, 'maxEOF': 1 } ],
@@ -118,9 +117,10 @@ module.exports = {
     } ],
 
     // Import specifics
-    'import/no-cycle': 'error',
-    'import/no-duplicates': 'error',
-    'import/no-extraneous-dependencies': 'off',
+    'import/no-cycle': [ 'error' ],
+    'import/no-duplicates': [ 'error' ],
+    'import/no-extraneous-dependencies': [ 'off' ],
+    'import/consistent-type-specifier-style': [ 'error', 'prefer-top-level' ],
     'import/order': [ 'error', {
       'groups': [ 'builtin', 'external', 'internal', [ 'parent', 'sibling' ], 'index', 'object', 'type' ],
       'newlines-between': 'always',
@@ -128,9 +128,9 @@ module.exports = {
     } ],
 
     // Unicorn extras
-    'unicorn/empty-brace-spaces': 'error',
-    'unicorn/no-instanceof-array': 'error',
-    'unicorn/prefer-node-protocol': 'error',
+    'unicorn/empty-brace-spaces': [ 'error' ],
+    'unicorn/no-instanceof-array': [ 'error' ],
+    'unicorn/prefer-node-protocol': [ 'error' ],
 
     // Turn off specific JavaScript rules
     'guard-for-in': [ 'off' ], // no errors on for ... in
@@ -185,5 +185,4 @@ module.exports = {
       'sourceType': 'module',
     },
   } ],
-
 }
