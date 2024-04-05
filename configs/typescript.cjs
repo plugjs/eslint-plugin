@@ -106,7 +106,7 @@ module.exports = {
     'valid-jsdoc': [ 'off' ], // nope as well!
 
     // TypeScript sanity
-    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-imports': [ 'error' ],
     '@typescript-eslint/no-unused-vars': [ 'error' ],
     '@typescript-eslint/no-dupe-class-members': [ 'error' ],
     '@typescript-eslint/no-invalid-this': [ 'error' ],
@@ -157,11 +157,14 @@ module.exports = {
       'no-invalid-this': [ 'error' ],
 
       // Turn off specific TypeScript rules
-      '@typescript-eslint/no-unused-vars': [ 'off' ],
-      '@typescript-eslint/no-dupe-class-members': [ 'off' ],
-      '@typescript-eslint/no-invalid-this': [ 'off' ],
-      '@typescript-eslint/no-floating-promises': [ 'off' ],
+      '@typescript-eslint/consistent-type-imports': [ 'off' ],
       '@typescript-eslint/explicit-function-return-type': [ 'off' ],
+      '@typescript-eslint/indent': [ 'off' ],
+      '@typescript-eslint/no-dupe-class-members': [ 'off' ],
+      '@typescript-eslint/no-floating-promises': [ 'off' ],
+      '@typescript-eslint/no-invalid-this': [ 'off' ],
+      '@typescript-eslint/no-unused-vars': [ 'off' ],
+      '@typescript-eslint/space-before-function-paren': [ 'off' ],
     },
   }, {
     files: [ 'src/**' ],
