@@ -112,6 +112,7 @@ module.exports = {
     '@typescript-eslint/no-invalid-this': [ 'error' ],
     '@typescript-eslint/no-floating-promises': [ 'error' ],
     '@typescript-eslint/explicit-function-return-type': [ 'error', {
+      'allowExpressions': true,
       'allowDirectConstAssertionInArrowFunctions': true,
       'allowConciseArrowFunctionExpressionsStartingWithVoid': true,
     } ],
