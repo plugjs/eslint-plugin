@@ -7,7 +7,7 @@
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "node ./build.mjs && eslint eslint.config.mjs configs"
+    "build": "eslint eslint.config.mjs configs"
   },
   "dependencies": {},
   "devDependencies": {
