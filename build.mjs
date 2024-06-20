@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises'
+
 import { build } from 'esbuild'
 
 // In this transition period between ESLint v8 and v9, and between TypeScript
@@ -23,20 +24,20 @@ import { build } from 'esbuild'
 // "package.json" file moving those dependencies from "dev" to "real" ones, and
 // injecting any *extra* dependencies needed by the bundles.
 
-const bundled_modules = [
+const bundledModules = [
   '@stylistic/eslint-plugin-js',
   '@stylistic/eslint-plugin-jsx',
   '@stylistic/eslint-plugin-plus',
   '@stylistic/eslint-plugin-ts',
 ]
 
-const local_bundler = {
+const localBundler = {
   name: 'local-bundler',
   setup(build) {
     build.onResolve({ filter: /.*/ }, (args) => {
       if (! args.importer) return null // entry point
       if (args.path.startsWith('.')) return null // files, always bundled
-      if (bundled_modules.includes(args.path)) return null // bundled modules
+      if (bundledModules.includes(args.path)) return null // bundled modules
 
       // anything else is an external module
       externals.add(args.path)
@@ -48,7 +49,7 @@ const local_bundler = {
 
 async function bundle(input, output) {
   await build({
-    plugins: [ local_bundler ],
+    plugins: [ localBundler ],
     entryPoints: [ input ],
     platform: 'node',
     outfile: output,
@@ -69,6 +70,7 @@ const externals = new Set()
 
 // Bundle up our dependencies
 await bundle('@stylistic/eslint-plugin', 'bundles/stylistic-eslint-plugin.cjs')
+await bundle('eslint-import-resolver-node', 'bundles/eslint-import-resolver-node.cjs')
 await bundle('eslint-import-resolver-typescript', 'bundles/eslint-import-resolver-typescript.cjs')
 await bundle('eslint-plugin-import-x', 'bundles/eslint-plugin-import-x.cjs')
 
@@ -87,6 +89,7 @@ for (const external of externals) {
 for (const dependency of Object.keys(pkg.devDependencies)) {
   if (dependency === 'esbuild') continue
   if (dependency === '@stylistic/eslint-plugin') continue
+  if (dependency === 'eslint-import-resolver-node') continue
   if (dependency === 'eslint-import-resolver-typescript') continue
   if (dependency === 'eslint-plugin-import-x') continue
 
@@ -95,7 +98,7 @@ for (const dependency of Object.keys(pkg.devDependencies)) {
 
 // Sort our dependencies, before dumping them out
 pkg.dependencies = Object.fromEntries(Object.entries(deps)
-  .sort(([ d1 ], [ d2 ]) => d1 < d2 ? -1 : d1 > d2 ? 1 : 0))
+    .sort(([ d1 ], [ d2 ]) => d1 < d2 ? -1 : d1 > d2 ? 1 : 0))
 
 // Mangle our "package.json"
 delete pkg.devDependencies
