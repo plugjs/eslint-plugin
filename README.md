@@ -37,6 +37,17 @@ This includes a number of configurations:
   * `typescript-eslint/recommended`: recommended config for TypeScript
 * `plugjs-typescript`: our rules overriding `typescript-eslint/recommended`.
 
+Notes on building
+-----------------
+
+During this transitional period (ESLint from v8 to v9, and TypeScript ESLint
+from v7 to v8) a number of plugins, even if they are working, are specifying
+wrong/old dependencies in their packages.
+
+For those plugins, we bundle them up and ship them with this plugin, and
+hopefully we'll be able to un-bundle them as the various packages move in their
+transitions.
+
 Legal Stuff
 -----------
 
