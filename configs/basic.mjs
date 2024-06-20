@@ -152,9 +152,9 @@ export const importx = {
       'espree': [ '.js', '.mjs', '.cjs' ],
     },
     'import-x/resolver': {
-      // point to our bundled-in typescript resolver...
+      // point to our bundled-in typescript *and* node resolvers...
       '../bundles/eslint-import-resolver-typescript.cjs': true,
-      'node': true,
+      '../bundles/eslint-import-resolver-node.cjs': true,
     },
   },
 
