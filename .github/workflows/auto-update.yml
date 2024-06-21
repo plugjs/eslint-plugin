@@ -25,14 +25,10 @@ jobs:
       - name: Check and apply dependencies updates
         run: |
           # Check for updates, and exit script on error / no updates found
-          npx '@juit/check-updates' --quick --bump || exit $(( $? == 255 ? 0 : $? ))
+          npx '@juit/check-updates' --quick --bump -- ./package-proto.json || exit $(( $? == 255 ? 0 : $? ))
 
-          # If still here, just run a full package update and install dependencies
-          rm -rf node-modules package-lock.json
-          npm install
-
-          # Build our package
-          npm run build
+          # If still here use our script to rebuild our bundles and package
+          ./build.sh
 
           # Commit all changes and push them back to the repo
           git config user.email 'developers@juit.com'

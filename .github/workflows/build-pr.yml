@@ -20,5 +20,4 @@ jobs:
 
       - name: Build Package
         run: |
-          npm clean-install
-          npm run build
+          ./build.sh

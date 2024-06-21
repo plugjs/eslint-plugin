@@ -1,2 +1,5 @@
 *.tgz
+bundles/
 node_modules/
+package-lock.json
+package.json
