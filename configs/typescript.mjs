@@ -17,6 +17,9 @@ export const typescript = {
       allowConciseArrowFunctionExpressionsStartingWithVoid: true,
     } ],
     '@typescript-eslint/no-dupe-class-members': 'error',
+    '@typescript-eslint/no-empty-object-type': [ 'error', {
+      allowInterfaces: 'with-single-extends',
+    } ],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/no-invalid-this': 'error',
@@ -24,7 +27,6 @@ export const typescript = {
       args: 'after-used',
       argsIgnorePattern: '^_',
     } ],
-
   },
 }
 
