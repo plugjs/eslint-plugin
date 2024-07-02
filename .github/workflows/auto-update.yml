@@ -25,7 +25,7 @@ jobs:
       - name: Check and apply dependencies updates
         run: |
           # Check for updates, and exit script on error / no updates found
-          npx '@juit/check-updates' --quick --bump -- ./package-proto.json || exit $(( $? == 255 ? 0 : $? ))
+          npx '@juit/check-updates' --bump -- ./package-proto.json || exit $(( $? == 255 ? 0 : $? ))
 
           # If still here use our script to rebuild our bundles and package
           ./build.sh
