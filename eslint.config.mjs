@@ -33,7 +33,10 @@ export * from './configs/javascript.mjs'
  * * `plugjs-typescript`: our rules overriding `typescript-eslint/recommended`.
  */
 export default [
-  js.configs.recommended,
+  { // give a name to this config before we go completely nuts!
+    name: 'eslint/js/recommended',
+    ...js.configs.recommended,
+  },
   ...basic,
   ...javascript,
   ...typescript,
