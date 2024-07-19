@@ -1,4 +1,28 @@
 /** Basic extra rules for JavaScript sources. */
+import process from 'node:process'
+import path from 'node:path'
+import fs from 'node:fs'
+
+import globals from 'globals'
+
+function findModuleType(directory) {
+  const file = path.join(directory, 'package.json')
+  try {
+    const data = JSON.parse(fs.readFileSync(file, 'utf-8'))
+    return data.type || 'commonjs'
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw new Error(`Error reading "${file}"`, { cause: error })
+    }
+
+    const parent = path.dirname(directory)
+    if (parent === directory) return 'commonjs'
+    return findModuleType(parent)
+  }
+}
+
+const moduleType = findModuleType(process.cwd())
+
 export const javascript = {
   name: 'plugjs-javascript',
 
@@ -21,10 +45,11 @@ export const javascript = {
 export const javascriptCommonJs = {
   name: 'plugjs-javascript-cjs',
 
-  files: [ '*.cjs' ],
+  files: moduleType === 'commonjs' ? [ '**/*.cjs', '**/*.js' ] : [ '**/*.cjs' ],
 
   languageOptions: {
     sourceType: 'commonjs',
+    globals: globals.node,
   },
 }
 
@@ -32,10 +57,11 @@ export const javascriptCommonJs = {
 export const javascriptModule = {
   name: 'plugjs-javascript-esm',
 
-  files: [ '*.mjs' ],
+  files: moduleType === 'module' ? [ '**/*.mjs', '**/*.js' ] : [ '**/*.mjs' ],
 
   languageOptions: {
     sourceType: 'module',
+    globals: globals.nodeBuiltin,
   },
 }
 
