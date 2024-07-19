@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
@@ -49,9 +49,11 @@
     "url": "git+ssh://git@github.com/plugjs/eslint-plugin.git"
   },
   "keywords": [
-    "validation",
-    "typescript",
-    "javascript"
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "javascript",
+    "typescript"
   ],
   "bugs": {
     "url": "https://github.com/plugjs/eslint-plugin/issues"
