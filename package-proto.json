@@ -1,8 +1,8 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Shared ESLint configurations and extras",
-  "main": "./eslint.config.mjs",
+  "main": "./index.mjs",
   "type": "module",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
@@ -42,5 +42,18 @@
     "eslint.config.mjs",
     "bundles/",
     "configs/"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/plugjs/eslint-plugin.git"
+  },
+  "keywords": [
+    "validation",
+    "typescript",
+    "javascript"
+  ],
+  "bugs": {
+    "url": "https://github.com/plugjs/eslint-plugin/issues"
+  },
+  "homepage": "https://github.com/plugjs/eslint-plugin#readme"
 }
