@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
@@ -24,17 +24,11 @@
     "eslint": "^9.8.0"
   },
   "overrides": {
-    "@stylistic/eslint-plugin-plus": {
-      "@typescript-eslint/utils": "rc-v8"
-    },
-    "@stylistic/eslint-plugin-ts": {
-      "@typescript-eslint/utils": "rc-v8"
-    },
     "eslint-plugin-import": {
-      "eslint": "^9.5.0"
+      "eslint": "^9"
     },
     "eslint-plugin-import-x": {
-      "@typescript-eslint/utils": "rc-v8"
+      "@typescript-eslint/utils": "^8"
     }
   },
   "files": [
