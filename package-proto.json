@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
@@ -10,7 +10,7 @@
     "build": "eslint"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.0",
+    "@eslint/js": "^9.9.0",
     "@stylistic/eslint-plugin": "^2.6.4",
     "esbuild": "^0.23.0",
     "eslint-import-resolver-node": "^0.3.9",
