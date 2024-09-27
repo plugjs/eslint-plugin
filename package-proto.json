@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
@@ -10,18 +10,18 @@
     "build": "eslint"
   },
   "devDependencies": {
-    "@eslint/js": "^9.10.0",
+    "@eslint/js": "^9.11.1",
     "@stylistic/eslint-plugin": "^2.8.0",
-    "esbuild": "^0.23.1",
+    "esbuild": "^0.24.0",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^3.6.3",
-    "eslint-plugin-import-x": "^4.2.1",
+    "eslint-plugin-import-x": "^4.3.0",
     "eslint-plugin-unicorn": "^55.0.0",
     "globals": "^15.9.0",
-    "typescript-eslint": "^8.6.0"
+    "typescript-eslint": "^8.7.0"
   },
   "peerDependencies": {
-    "eslint": "^9.10.0"
+    "eslint": "^9.11.1"
   },
   "overrides": {
     "eslint-plugin-import": {
