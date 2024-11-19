@@ -6,6 +6,7 @@ import typescript from './configs/typescript.mjs'
 
 export * from './configs/basic.mjs'
 export * from './configs/javascript.mjs'
+export * from './configs/typescript.mjs'
 
 /**
  * Base `ESLint` configuration for PlugJS.

@@ -1,9 +1,7 @@
-import globals from 'globals'
+import stylisticPlugin from '@stylistic/eslint-plugin'
+import importxPlugin from 'eslint-plugin-import-x'
 import unicornPlugin from 'eslint-plugin-unicorn'
-
-import importxPlugin from '../bundles/eslint-plugin-import-x.cjs'
-import stylisticPlugin from '../bundles/stylistic-eslint-plugin.cjs'
-import '../bundles/eslint-import-resolver-typescript.cjs' // preload!
+import globals from 'globals'
 
 /* ========================================================================== */
 
@@ -152,9 +150,8 @@ export const importx = {
       'espree': [ '.js', '.mjs', '.cjs' ],
     },
     'import-x/resolver': {
-      // point to our bundled-in typescript *and* node resolvers...
-      '../bundles/eslint-import-resolver-typescript.cjs': true,
-      '../bundles/eslint-import-resolver-node.cjs': true,
+      'eslint-import-resolver-typescript': true,
+      'eslint-import-resolver-node': true,
     },
   },
 

@@ -1,41 +1,33 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.2.26",
+  "version": "0.3.0",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "eslint"
+    "build": "node check.mjs && eslint"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.14.0",
-    "@stylistic/eslint-plugin": "^2.10.1",
-    "esbuild": "^0.24.0",
+  "dependencies": {
+    "@eslint/js": "^9.15.0",
+    "@stylistic/eslint-plugin": "^2.11.0",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import-x": "^4.4.2",
-    "eslint-plugin-unicorn": "^56.0.0",
+    "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.12.0",
-    "typescript-eslint": "^8.14.0"
+    "typescript-eslint": "^8.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0"
   },
   "peerDependencies": {
-    "eslint": "^9.14.0"
-  },
-  "overrides": {
-    "eslint-plugin-import": {
-      "eslint": "^9"
-    },
-    "eslint-plugin-import-x": {
-      "@typescript-eslint/utils": "^8"
-    }
+    "eslint": "^9.15.0"
   },
   "files": [
     "*.md",
-    "bundles/",
     "configs/",
-    "eslint.config.mjs",
     "index.mjs"
   ],
   "repository": {
