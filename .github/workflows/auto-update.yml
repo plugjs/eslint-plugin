@@ -28,6 +28,7 @@ jobs:
           npx '@juit/check-updates' --bump || exit $(( $? == 255 ? 0 : $? ))
 
           # If still here use our script to rebuild our bundles and package
+          npm clean-install
           npm run build
 
           # Commit all changes and push them back to the repo
