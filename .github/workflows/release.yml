@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Package
         run: |
-          ./build.sh
+          npm run build
 
       - name: Publish Package
         run: |

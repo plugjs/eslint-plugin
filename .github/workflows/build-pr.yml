@@ -20,4 +20,4 @@ jobs:
 
       - name: Build Package
         run: |
-          ./build.sh
+          npm run build
