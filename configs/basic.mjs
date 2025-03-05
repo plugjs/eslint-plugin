@@ -127,7 +127,7 @@ export const unicorn = {
 
   rules: {
     'unicorn/empty-brace-spaces': 'error',
-    'unicorn/no-instanceof-array': 'error',
+    'unicorn/no-instanceof-builtins': 'error',
     'unicorn/prefer-node-protocol': 'error',
   },
 }
