@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           registry-url: https://registry.npmjs.org
-          node-version: 18.x
+          node-version: 22.x
 
       - name: Check and apply dependencies updates
         run: |

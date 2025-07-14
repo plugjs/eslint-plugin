@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.3.31",
+  "version": "0.3.32",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
