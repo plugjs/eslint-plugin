@@ -66,7 +66,7 @@ export const stylistic = {
     '@stylistic/comma-style': 'error',
     '@stylistic/computed-property-spacing': 'error',
     '@stylistic/eol-last': [ 'error', 'always' ],
-    '@stylistic/func-call-spacing': 'error',
+    '@stylistic/function-call-spacing': 'error',
     '@stylistic/generator-star-spacing': [ 'error', 'after' ],
     '@stylistic/indent': [ 'error', 2, {
       CallExpression: {
