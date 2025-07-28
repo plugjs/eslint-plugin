@@ -99,7 +99,7 @@ export const stylistic = {
     '@stylistic/operator-linebreak': [ 'error', 'after' ],
     '@stylistic/padded-blocks': [ 'error', 'never' ],
     '@stylistic/quote-props': [ 'error', 'consistent' ],
-    '@stylistic/quotes': [ 'error', 'single', { 'allowTemplateLiterals': false } ],
+    '@stylistic/quotes': [ 'error', 'single', { 'allowTemplateLiterals': 'never' } ],
     '@stylistic/semi': [ 'error', 'never' ],
     '@stylistic/semi-spacing': 'error',
     '@stylistic/space-before-blocks': 'error',
