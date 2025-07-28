@@ -85,6 +85,7 @@ export const stylistic = {
       SwitchCase: 1,
       ignoredNodes: [
         'ConditionalExpression',
+        'TSConditionalType',
       ],
     } ],
     '@stylistic/key-spacing': 'error',
