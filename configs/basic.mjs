@@ -100,6 +100,7 @@ export const stylistic = {
         '?': 'ignore',
         ':': 'ignore',
         '|': 'before',
+        '&': 'before',
       },
     } ],
     '@stylistic/padded-blocks': [ 'error', 'never' ],
