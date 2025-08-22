@@ -83,10 +83,8 @@ export const stylistic = {
       MemberExpression: 2,
       ObjectExpression: 1,
       SwitchCase: 1,
-      ignoredNodes: [
-        'ConditionalExpression',
-        'TSConditionalType',
-      ],
+      flatTernaryExpressions: true,
+      offsetTernaryExpressions: false,
     } ],
     '@stylistic/key-spacing': 'error',
     '@stylistic/keyword-spacing': 'error',
@@ -97,7 +95,13 @@ export const stylistic = {
     '@stylistic/no-tabs': 'error',
     '@stylistic/no-trailing-spaces': 'error',
     '@stylistic/object-curly-spacing': [ 'error', 'always' ],
-    '@stylistic/operator-linebreak': [ 'error', 'after' ],
+    '@stylistic/operator-linebreak': [ 'error', 'after', {
+      'overrides': {
+        '?': 'ignore',
+        ':': 'ignore',
+        '|': 'before',
+      },
+    } ],
     '@stylistic/padded-blocks': [ 'error', 'never' ],
     '@stylistic/quote-props': [ 'error', 'consistent' ],
     '@stylistic/quotes': [ 'error', 'single', { 'allowTemplateLiterals': 'never' } ],
