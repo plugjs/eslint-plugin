@@ -1,23 +1,26 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.3.41",
+  "version": "0.4.0",
   "description": "Shared ESLint configurations and extras",
   "main": "./index.mjs",
   "type": "module",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
+  "bin": {
+    "eslint-check-deprecated-rules": "./check.mjs"
+  },
   "scripts": {
     "build": "node check.mjs && eslint"
   },
   "dependencies": {
     "@eslint/js": "^9.34.0",
-    "@stylistic/eslint-plugin": "^5.2.3",
+    "@stylistic/eslint-plugin": "^5.3.1",
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-unicorn": "^60.0.0",
     "globals": "^16.3.0",
-    "typescript-eslint": "^8.40.0"
+    "typescript-eslint": "^8.42.0"
   },
   "devDependencies": {
     "eslint": "^9.34.0"
