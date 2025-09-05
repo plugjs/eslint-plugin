@@ -1,16 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash -e
 
-# Use our prototype to mark the first install (for bundling)
-rm -rf "node_modules" "package-lock.json"
-cp "package-proto.json" "package.json"
-npm install
+# First of all transpile our sources
+echo "... Transpiling TypeScript sources"
+npx tsc
 
-# Bundle up our problematic dependencies
-node "./build.mjs"
+# Then run "eslint" to check our configs actually work
+echo "... Running ESLint on our own configs"
+npx eslint
 
-# Reinstall with the new "package.json"
-rm -rf "node_modules" "package-lock.json"
-npm install
-
-# Check that we can at least lint ourselves
-npm run build
+# Finally, run our own check script to verify that no deprecated rules are used
+echo "... Checking for deprecated rules"
+node dist/check.js
