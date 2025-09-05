@@ -52,6 +52,7 @@ export const configs = {
  * The default ESLint configuration for PlugJS.
  *
  * This includes all the configurations from:
+ *
  * * `eslint/js/recommended`: the base ESLint recommended rules for JavaScript.
  * * `plugjs/basic`: basic rules shared between JavaScript and TypeScript.
  *   * `plugjs/basic/base`: basic configuration of ESLint rules.
@@ -63,7 +64,12 @@ export const configs = {
  *   * `plugjs/javascript/commonjs`: marks `*.cjs` files as `commonjs`.
  *   * `plugjs/javascript/modules`: marks `*.mjs` files as `module`.
  * * `plugjs/typescript`: rules specific to TypeScript code bases.
- *  */
+ *   * `plugjs/typescript/plugin`: defines the "@typescript-eslint" plugin.
+ *   * `plugjs/typescript/options`: configuration for "@typescript-eslint".
+ *   * other rules from `typescript-eslint/recommended`: all other recommended
+ *     Typescript rules, restricted to `.ts`, `.cts`, and `.mts` files.
+ *   * `plugjs/typescript/overrides`: our rules overriding recommended.
+ */
 export default [
   initial,
   ...basicConfigs,
