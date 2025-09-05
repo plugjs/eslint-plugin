@@ -1,16 +1,17 @@
 PlugJS ESLint (v9) Shared Configuration
 =======================================
 
-This package exports simple configurations for linting our projects. It's the
-easiest way to actually share some configs and plugins.
+Provides shared ESLint v9 flat-config presets for PlugJS projects. It’s the
+easiest way to share consistent rules and plugins across repos.
 
-* [Quick Install](#quick-install)
+* [Quick Setup](#quick-setup)
 * [Configurations](#configurations)
+* [CLI Utility](#cli-utility)
 * [Legal Stuff](#legal-stuff)
 
 
-Quick Install
--------------
+Quick Setup
+-----------
 
 Just create a new `eslint.config.mjs` file following this template, your mileage
 might vary, and according to your specific needs you might need to add/remove
@@ -41,9 +42,9 @@ export default [
     rules: {
       // Turn _ON_ dependencies checks only for sources
       'import-x/no-extraneous-dependencies': [ 'error', {
-        'devDependencies': true,
+        'devDependencies': false,
+        'optionalDependencies': false,
         'peerDependencies': true,
-        'optionalDependencies': true,
         'bundledDependencies': false,
       } ],
     },
@@ -59,8 +60,8 @@ export default [
 
   // ===== IGNORED FILES =======================================================
   // REMEMBER! Ignores *must* be in its own configuration, they can not coexist
-  // with "rules", "languageOptions", "files", ... or anything else, otherwise
-  // ESLint will blaantly ignore the ignore files!
+  // with "rules", "languageOptions", "files", ... or anything else (ESLint v9
+  // flat config). Otherwise ESLint will blatantly ignore the ignored files!
   {
     ignores: [
       'coverage/',
