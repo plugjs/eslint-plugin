@@ -184,9 +184,9 @@ export const importx: ESLintConfig<'plugjs/basic/importx'> = {
  *
  * This module includes these configurations:
  *
- * * `plugjs/base`: basic configuration of ESLint rules.
- * * `plugjs/stylistic`: style shared between JavaScript and TypeScript.
- * * `plugjs/unicorn`: extra niceties from the ESLint Unicorn plugin.
- * * `plugjs/importx`: defines the style of our imports.
+ * * `plugjs/basic/base`: basic configuration of ESLint rules.
+ * * `plugjs/basic/stylistic`: style shared between JavaScript and TypeScript.
+ * * `plugjs/basic/unicorn`: extra niceties from the ESLint Unicorn plugin.
+ * * `plugjs/basic/importx`: defines the style of our imports.
  */
 export default [ base, stylistic, unicorn, importx ] as const
