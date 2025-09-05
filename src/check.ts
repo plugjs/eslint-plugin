@@ -4,7 +4,7 @@
 import { ESLint } from 'eslint'
 
 /** @type Record<string, string[]> */
-const deprecated = {}
+const deprecated: Record<string, string[]> = {}
 
 // Pretty colors
 const ylw = '\u001b[38;5;220m' // yellow

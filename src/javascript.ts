@@ -1,16 +1,22 @@
 /** Basic extra rules for JavaScript sources. */
-import process from 'node:process'
-import path from 'node:path'
 import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
 
 import globals from 'globals'
 
-function findModuleType(directory) {
+import type { ESLintConfig } from '.'
+
+/* ========================================================================== *
+ * INTERNALS                                                                  *
+ * ========================================================================== */
+
+function findModuleType(directory: string): 'commonjs' | 'module' {
   const file = path.join(directory, 'package.json')
   try {
     const data = JSON.parse(fs.readFileSync(file, 'utf-8'))
     return data.type || 'commonjs'
-  } catch (error) {
+  } catch (error: any) {
     if (error.code !== 'ENOENT') {
       throw new Error(`Error reading "${file}"`, { cause: error })
     }
@@ -23,8 +29,13 @@ function findModuleType(directory) {
 
 const moduleType = findModuleType(process.cwd())
 
-export const javascript = {
-  name: 'plugjs-javascript',
+/* ========================================================================== *
+ * CONFIGS                                                                    *
+ * ========================================================================== */
+
+/** Shared configuration for JavaScript files (CommonJS or ES modules). */
+export const shared: ESLintConfig<'plugjs/javascript/shared'> = {
+  name: 'plugjs/javascript/shared',
 
   files: [ '*.js', '*.cjs', '*.mjs' ],
 
@@ -37,13 +48,14 @@ export const javascript = {
       args: 'after-used',
       argsIgnorePattern: '^_',
     } ],
-    'strict': [ 'error', 'global' ],
   },
 }
 
+/* ========================================================================== */
+
 /** Marks `*.cjs` files as `commonjs`. */
-export const javascriptCommonJs = {
-  name: 'plugjs-javascript-cjs',
+export const commonjs: ESLintConfig<'plugjs/javascript/commonjs'> = {
+  name: 'plugjs/javascript/commonjs',
 
   files: moduleType === 'commonjs' ? [ '**/*.cjs', '**/*.js' ] : [ '**/*.cjs' ],
 
@@ -51,11 +63,17 @@ export const javascriptCommonJs = {
     sourceType: 'commonjs',
     globals: globals.node,
   },
+
+  rules: {
+    'strict': [ 'error', 'global' ],
+  },
 }
 
+/* ========================================================================== */
+
 /** Marks `*.mjs` files as `module`. */
-export const javascriptModule = {
-  name: 'plugjs-javascript-esm',
+export const modules: ESLintConfig<'plugjs/javascript/modules'> = {
+  name: 'plugjs/javascript/modules',
 
   files: moduleType === 'module' ? [ '**/*.mjs', '**/*.js' ] : [ '**/*.mjs' ],
 
@@ -63,15 +81,21 @@ export const javascriptModule = {
     sourceType: 'module',
     globals: globals.nodeBuiltin,
   },
+
+  rules: {
+    'strict': [ 'error', 'never' ],
+  },
 }
+
+/* ========================================================================== */
 
 /**
  * JavaScript module: declares all the common rules for JavaScript code bases.
  *
  * This module includes these configurations:
  *
- * * `plugjs-javascript`: basic extra rules for JavaScript sources.
- * * `plugjs-javascript-cjs`: marks `*.cjs` files as `commonjs`.
- * * `plugjs-javascript-mjs`: marks `*.mjs` files as `module`.
+ * * `plugjs/javascript/shared`: shared configuration for JavaScript files.
+ * * `plugjs/javascript/commonjs`: marks `*.cjs` files as `commonjs`.
+ * * `plugjs/javascript/modules`: marks `*.mjs` files as `module`.
  */
-export default [ javascript, javascriptCommonJs, javascriptModule ]
+export default [ shared, commonjs, modules ] as const
