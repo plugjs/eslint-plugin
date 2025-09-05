@@ -13,11 +13,14 @@ const rst = '\u001b[0m' // reset
 // Running in GitHub Actions?
 const gh = process.env.GITHUB_ACTIONS === 'true'
 
+// Files to probe to surface deprecations across JS/TS variants
+const FILES = [ 'x.js', 'x.mjs', 'x.cjs', 'x.ts', 'x.cts', 'x.mts' ]
+
 // Create a new ESLint
 const eslint = new ESLint()
 
 // Fake lint some sources (JS, TS, ...) to get the deprecated rules
-for (const f of [ 'x.js', 'x.mjs', 'x.cjs', 'x.ts', 'x.cts', 'x.mts' ]) {
+for (const f of FILES) {
   const results = await eslint.lintText('var foo="bar";', { filePath: f })
   for (const result of results) {
     for (const rule of result.usedDeprecatedRules) {
