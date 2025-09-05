@@ -4,14 +4,62 @@ PlugJS ESLint (v9) Shared Configuration
 This package exports simple configurations for linting our projects. It's the
 easiest way to actually share some configs and plugins.
 
-Just add in your `eslint.config.mjs` something similar to:
+Just create a new `eslint.config.mjs` file following this template, your mileage
+might vary, and according to your specific needs you might need to add/remove
+stuff to fit your project:
 
 ```javascript
 import configurations from '@plugjs/eslint-plugin'
 
 export default [
   ...configurations,
-  // any other configuration you might want to add for your project...
+
+  // ===== DEFINE THE LOCATION OF OUR TSCONFIG.JSON FILES ======================
+  {
+    languageOptions: {
+      parserOptions: {
+        createDefaultProgram: false,
+        project: [
+          './tsconfig.json',
+          './test/tsconfig.json',
+        ],
+      },
+    },
+  },
+
+  // ===== ENSURE THAT OUR MAIN FILES DEPEND ONLY ON PROPER DEPENDENCIES =======
+  {
+    files: [ 'src/**' ],
+    rules: {
+      // Turn _ON_ dependencies checks only for sources
+      'import-x/no-extraneous-dependencies': [ 'error', {
+        'devDependencies': true,
+        'peerDependencies': true,
+        'optionalDependencies': true,
+        'bundledDependencies': false,
+      } ],
+    },
+  },
+
+  // ===== PROJECT LOCAL RULES =================================================
+  // Add any extra rule not tied to a specific "files" pattern here, e.g.:
+  // {
+  //   rules: {
+  //     'camelcase': 'off',
+  //   },
+  // },
+
+  // ===== IGNORED FILES =======================================================
+  // REMEMBER! Ignores *must* be in its own configuration, they can not coexist
+  // with "rules", "languageOptions", "files", ... or anything else, otherwise
+  // ESLint will blaantly ignore the ignore files!
+  {
+    ignores: [
+      'coverage/',
+      'dist/',
+      'node_modules/',
+    ],
+  },
 ]
 ```
 
@@ -36,17 +84,6 @@ This includes a number of configurations:
     with TypeScript.
   * `typescript-eslint/recommended`: recommended config for TypeScript
 * `plugjs-typescript`: our rules overriding `typescript-eslint/recommended`.
-
-Notes on building
------------------
-
-During this transitional period (ESLint from v8 to v9, and TypeScript ESLint
-from v7 to v8) a number of plugins, even if they are working, are specifying
-wrong/old dependencies in their packages.
-
-For those plugins, we bundle them up and ship them with this plugin, and
-hopefully we'll be able to un-bundle them as the various packages move in their
-transitions.
 
 Legal Stuff
 -----------
