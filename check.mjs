@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable no-console */
 import { ESLint } from 'eslint'
 
@@ -38,4 +40,6 @@ if (deprecations.length !== 0) {
           if (gh) console.log(`::warning::Rule "${rule}" deprecated without replacement`)
         }
       })
+} else {
+  console.log(`${grn}Success:${rst} no deprecated rules found!`)
 }
