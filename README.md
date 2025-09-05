@@ -1,8 +1,17 @@
 PlugJS ESLint (v9) Shared Configuration
 =======================================
 
-This package exports simple configurations for linting our projects. It's the
-easiest way to actually share some configs and plugins.
+Provides shared ESLint v9 flat-config presets for PlugJS projects. It’s the
+easiest way to share consistent rules and plugins across repos.
+
+* [Quick Setup](#quick-setup)
+* [Configurations](#configurations)
+* [CLI Utility](#cli-utility)
+* [Legal Stuff](#legal-stuff)
+
+
+Quick Setup
+-----------
 
 Just create a new `eslint.config.mjs` file following this template, your mileage
 might vary, and according to your specific needs you might need to add/remove
@@ -33,9 +42,9 @@ export default [
     rules: {
       // Turn _ON_ dependencies checks only for sources
       'import-x/no-extraneous-dependencies': [ 'error', {
-        'devDependencies': true,
+        'devDependencies': false,
+        'optionalDependencies': false,
         'peerDependencies': true,
-        'optionalDependencies': true,
         'bundledDependencies': false,
       } ],
     },
@@ -51,8 +60,8 @@ export default [
 
   // ===== IGNORED FILES =======================================================
   // REMEMBER! Ignores *must* be in its own configuration, they can not coexist
-  // with "rules", "languageOptions", "files", ... or anything else, otherwise
-  // ESLint will blaantly ignore the ignore files!
+  // with "rules", "languageOptions", "files", ... or anything else (ESLint v9
+  // flat config). Otherwise ESLint will blatantly ignore the ignored files!
   {
     ignores: [
       'coverage/',
@@ -63,27 +72,39 @@ export default [
 ]
 ```
 
-This includes a number of configurations:
 
-* `eslint-recommended`: recommended JavaScript config from ESLint.
+Configurations
+--------------
 
-* `plugjs-base`: basic configuration of ESLint rules.
-* `plugjs-stylistic`: style shared between JavaScript and TypeScript.
-* `plugjs-unicorn`: extra niceties from the ESLint Unicorn plugin.
-* `plugjs-importx`: defines the style of our imports.
+This includes a number of individual configurations:
 
-* `plugjs-javascript`: basic extra rules for JavaScript sources.
-* `plugjs-javascript-cjs`: marks `*.cjs` files as `commonjs`.
-* `plugjs-javascript-mjs`: marks `*.mjs` files as `module`.
+* `plugjs/basic/base`: basic configuration of ESLint rules.
+* `plugjs/basic/stylistic`: style shared between JavaScript and TypeScript.
+* `plugjs/basic/unicorn`: extra niceties from the ESLint Unicorn plugin.
+* `plugjs/basic/importx`: defines the style of our imports.
 
-* `typescript-eslint/recommended`: imports all the configurations from
-  TypeScript ESlint recommended, but restrict them to operate only on
-  `.ts`, `.cts`, and `.mts` files. This *should* include:
-  * `typescript-eslint/base`: basic parser configuration.
-  * `typescript-eslint/eslint-recommended`: disable ESLint rules conflicting
-    with TypeScript.
-  * `typescript-eslint/recommended`: recommended config for TypeScript
-* `plugjs-typescript`: our rules overriding `typescript-eslint/recommended`.
+* `plugjs/javascript/shared`: shared configuration for JavaScript files.
+* `plugjs/javascript/commonjs`: marks `*.cjs` files as `commonjs`.
+
+* `plugjs/javascript/modules`: marks `*.mjs` files as `module`.
+* `plugjs/typescript/plugin`: defines the "@typescript-eslint" plugin.
+* `plugjs/typescript/options`: configuration for "@typescript-eslint".
+* `plugjs/typescript/overrides`: our rules overriding recommended.
+
+A set of grouped configurations are also available:
+
+* `plugjs/basic`: basic rules shared between JavaScript and TypeScript.
+  * includes all `plugjs/basic/...` individual configurations
+* `plugjs/javascript`: rules specific to JavaScript code bases.
+  * includes all `plugjs/javascript/...` individual configurations
+* `plugjs/typescript`: rules specific to TypeScript code bases.
+  * includes all `plugjs/typescript/...` individual configurations _and_...
+  * ...other rules from `typescript-eslint/recommended`: all other recommended
+    Typescript rules, restricted to `.ts`, `.cts`, and `.mts` files.
+
+The default configuration exported by the plugin includes all the configurations
+listed above _and_ the base `eslint/js/recommended` configuration from ESLint.
+
 
 Legal Stuff
 -----------
