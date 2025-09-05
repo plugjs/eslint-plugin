@@ -1,16 +1,26 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Shared ESLint configurations and extras",
-  "main": "./index.mjs",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
   "bin": {
-    "eslint-check-deprecated-rules": "./check.mjs"
+    "eslint-check-deprecated-rules": "./dist/check.js"
   },
   "scripts": {
-    "build": "node check.mjs && eslint"
+    "build": "./build.sh"
   },
   "dependencies": {
     "@eslint/js": "^9.34.0",
@@ -23,15 +33,18 @@
     "typescript-eslint": "^8.42.0"
   },
   "devDependencies": {
-    "eslint": "^9.34.0"
+    "@types/node": "^24.3.1",
+    "eslint": "^9.34.0",
+    "type-fest": "^4.41.0",
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "eslint": "^9.34.0"
   },
   "files": [
     "*.md",
-    "configs/",
-    "index.mjs"
+    "dist/",
+    "src/"
   ],
   "repository": {
     "type": "git",
