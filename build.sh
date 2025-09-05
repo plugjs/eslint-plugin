@@ -1,4 +1,5 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+set -e
 
 # First of all transpile our sources
 echo "... Transpiling TypeScript sources"
