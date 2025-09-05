@@ -37,7 +37,7 @@ const moduleType = findModuleType(process.cwd())
 export const shared: ESLintConfig<'plugjs/javascript/shared'> = {
   name: 'plugjs/javascript/shared',
 
-  files: [ '*.js', '*.cjs', '*.mjs' ],
+  files: [ '**/*.js', '**/*.cjs', '**/*.mjs' ],
 
   rules: {
     'guard-for-in': 'error',
