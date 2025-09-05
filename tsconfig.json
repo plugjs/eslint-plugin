@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": [ "esnext" ],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": [ "node" ],
+    "esModuleInterop": true,
+
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "verbatimModuleSyntax": true,
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+  },
+  "include": [
+    "./src",
+  ],
+}
