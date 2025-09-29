@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Package
         run: |
-          npm clean-install
+          npm clean-install --ignore-scripts
           npm run build
 
       - name: Publish Package
