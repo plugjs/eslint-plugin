@@ -5,37 +5,11 @@ on:
     - cron: "0 1 * * 4"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   auto-update:
-    runs-on: ubuntu-latest
     name: Automatic Updates
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.repo_token }}
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          registry-url: https://registry.npmjs.org
-          node-version: 22.x
-
-      - name: Check and apply dependencies updates
-        run: |
-          # Check for updates, and exit script on error / no updates found
-          npx '@juit/check-updates' --bump || exit $(( $? == 255 ? 0 : $? ))
-
-          # If still here, reinstall dependencies
-          rm -rf node_modules package-lock.json
-          npm install --ignore-scripts
-
-          # Build our package
-          npm run build
-
-          # Commit all changes and push them back to the repo
-          git config user.email 'developers@juit.com'
-          git config user.name 'Github Workflows'
-          git commit -a -m "Release for automatic updates $(date '+%Y-%m-%d %H:%M:%S')"
-          git push -u origin '${{ github.ref_name }}'
+    uses: juitnow/workflows-public/.github/workflows/auto-update.yml@main
+    secrets: inherit
