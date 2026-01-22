@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "description": "Shared ESLint configurations and extras",
   "type": "module",
   "main": "./dist/index.js",
@@ -30,10 +30,10 @@
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.0.0",
-    "typescript-eslint": "^8.53.0"
+    "typescript-eslint": "^8.53.1"
   },
   "devDependencies": {
-    "@types/node": "^25.0.8",
+    "@types/node": "^25.0.10",
     "eslint": "^9.39.2",
     "type-fest": "^5.4.1",
     "typescript": "^5.9.3"
