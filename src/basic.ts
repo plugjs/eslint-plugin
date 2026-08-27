@@ -3,7 +3,7 @@ import importxPlugin from 'eslint-plugin-import-x'
 import unicornPlugin from 'eslint-plugin-unicorn'
 import globals from 'globals'
 
-import type { ESLintConfig } from '.'
+import type { ESLintConfig } from './index.ts'
 
 /* ========================================================================== */
 

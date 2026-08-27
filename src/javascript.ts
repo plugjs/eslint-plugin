@@ -5,7 +5,7 @@ import process from 'node:process'
 
 import globals from 'globals'
 
-import type { ESLintConfig } from '.'
+import type { ESLintConfig } from './index.ts'
 
 /* ========================================================================== *
  * INTERNALS                                                                  *

@@ -1,26 +1,46 @@
 {
   "compilerOptions": {
-    "lib": [ "esnext" ],
+    "lib": ["esnext"],
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": [ "node" ],
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-
-    "strict": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-    "verbatimModuleSyntax": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
 
     "rootDir": "./src",
     "outDir": "./dist",
-
     "declaration": true,
     "declarationMap": false,
     "sourceMap": false,
+
+    // ES modules interoperability and preserve import/export statements
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+
+    // Import relative files as "file.ts" and rewrite them in the output
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+
+    // Ultra strict
+    "strict": true,
+    // Implies:
+    // - alwaysStrict
+    // - noImplicitAny
+    // - noImplicitThis
+    // - strictBindCallApply
+    // - strictBuiltinIteratorReturn
+    // - strictFunctionTypes
+    // - strictNullChecks
+    // - strictPropertyInitialization
+    // - useUnknownInCatchVariables
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
     "./src",

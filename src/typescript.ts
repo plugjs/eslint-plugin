@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint'
 
 import type { TSESLint } from '@typescript-eslint/utils'
-import type { ESLintConfig } from './index'
+import type { ESLintConfig } from './index.ts'
 
 /* ========================================================================== *
  * INTERNALS                                                                  *

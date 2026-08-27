@@ -11,7 +11,7 @@ const ylw = '\u001b[38;5;220m' // yellow
 const grn = '\u001b[38;5;76m' // greenish
 const rst = '\u001b[0m' // reset
 // Running in GitHub Actions?
-const gh = process.env.GITHUB_ACTIONS === 'true'
+const gh = process.env['GITHUB_ACTIONS'] === 'true'
 
 // Files to probe to surface deprecations across JS/TS variants
 const FILES = [ 'x.js', 'x.mjs', 'x.cjs', 'x.ts', 'x.cts', 'x.mts' ]
