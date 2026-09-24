@@ -1,6 +1,6 @@
 {
   "name": "@plugjs/eslint-plugin",
-  "version": "0.7.10",
+  "version": "0.7.11",
   "description": "Shared ESLint configurations and extras",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,18 +28,18 @@
     "eslint-import-resolver-node": "^0.4.0",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.17.1",
-    "eslint-plugin-unicorn": "^75.0.0",
+    "eslint-plugin-unicorn": "^76.0.0",
     "globals": "^17.12.0",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.1"
   },
   "devDependencies": {
-    "@types/node": "^26.6.1",
-    "eslint": "^10.10.0",
-    "type-fest": "^5.9.0",
+    "@types/node": "^26.6.2",
+    "eslint": "^10.11.0",
+    "type-fest": "^5.10.0",
     "typescript": "<7"
   },
   "peerDependencies": {
-    "eslint": "^10.10.0"
+    "eslint": "^10.11.0"
   },
   "files": [
     "*.md",
